@@ -1,0 +1,31 @@
+## Create and establish table/table columns
+CREATE TABLE store (id integer primary key, item TEXT, price INTEGER, condition TEXT, quantity INTEGER, aisle INTEGER);
+
+## adding data into the "store" table
+INSERT INTO store VALUES (1, "Pringles", 6.20, "New", 10, 1);
+INSERT INTO store VALUES (2, "Doritos-Nacho", 2.20, "New", 40, 1);
+INSERT INTO store VALUES (3, "Doritos-Cool", 4.20, "New", 20, 1);
+INSERT INTO store VALUES (4, "Ruffles", 5.30, "New", 15, 1);
+INSERT INTO store VALUES (5, "Pretzels", 3.30, "New", 12, 1);
+INSERT INTO store VALUES (6, "Chips-Ahoy!", 3.29, "New", 10, 2);
+INSERT INTO store VALUES (7, "Oreos-Chocolate", 3.29, "New", 16, 2);
+INSERT INTO store VALUES (8, "Oreos-Golden", 3.29, "New", 13, 2);
+INSERT INTO store VALUES (9, "Windmill Cookies", 4.29, "New", 5, 2);
+INSERT INTO store VALUES (10, "Fig Newtons", 2.78, "New", 8, 2);
+INSERT INTO store VALUES (11, "Sprite", 3.19, "New", 10, 3);
+INSERT INTO store VALUES (12, "Coke", 4.20, "New", 12, 3);
+INSERT INTO store VALUES (13, "Mountain Dew", 5.29, "New", 14, 3);
+INSERT INTO store VALUES (14, "Root Beer", 4.19, "New", 8, 3);
+INSERT INTO store VALUES (15, "Ginger-Ale", 2.19, "New", 17, 3);
+
+## Initial query to table.
+SELECT * FROM store;
+
+## Ordering table based on price of each item.
+SELECT * FROM store ORDER BY price;
+
+## Query to find the top 3 most expensive items in the store.
+SELECT item, price FROM store ORDER BY price desc LIMIT 3; 
+
+## Query to find out how many items are in the store.
+SELECT SUM(quantity) FROM store;
