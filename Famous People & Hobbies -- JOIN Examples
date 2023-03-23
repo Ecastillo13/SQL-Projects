@@ -1,0 +1,46 @@
+CREATE TABLE famous_people (id integer primary key, Name TEXT, Age INTEGER);
+INSERT INTO famous_people VALUES (1, "Albert Einstein", 76);
+INSERT INTO famous_people VALUES (2, "Bruce Lee", 32);
+INSERT INTO famous_people VALUES (3, "Amelia Earhart", 39);
+INSERT INTO famous_people VALUES (4, "Marlon Brando", 80);
+INSERT INTO famous_people VALUES (5, "Gordon Ramsay", 52);
+INSERT INTO famous_people VALUES (6, "Morgan Freeman", 64);
+INSERT INTO famous_people VALUES (7, "Dr. Seuss", 54);
+INSERT INTO famous_people VALUES (8, "Steve Carell", 42);
+INSERT INTO famous_people VALUES (9, "Rainn Wilson", 35);
+INSERT INTO famous_people VALUES (10, "Emily Blunt", 23);
+INSERT INTO famous_people VALUES (11, "Denzel Washington", 34);
+INSERT INTO famous_people VALUES (12, "Gandi", 32);
+INSERT INTO famous_people VALUES (13, "Martin Luther King", 42);
+INSERT INTO famous_people VALUES (14, "Tom Hanks", 56);
+INSERT INTO famous_people VALUES (15, "George Lucas", 47);
+
+CREATE TABLE hobbies (hobby_id integer primary key, Name TEXT);
+INSERT INTO hobbies VALUES (1, "Contemplation");
+INSERT INTO hobbies VALUES (2, "Make Movies");
+INSERT INTO hobbies VALUES (3, "Fly Airplanes");
+INSERT INTO hobbies VALUES (4, "Swimming");
+INSERT INTO hobbies VALUES (5, "Running");
+INSERT INTO hobbies VALUES (6, "Painting");
+INSERT INTO hobbies VALUES (7, "Drawing");
+INSERT INTO hobbies VALUES (8, "Counseling");
+INSERT INTO hobbies VALUES (9, "Clarinet Practice");
+INSERT INTO hobbies VALUES (10, "Ruminating on the past");
+INSERT INTO hobbies VALUES (11, "Coding");
+INSERT INTO hobbies VALUES (12, "Studying film");
+INSERT INTO hobbies VALUES (13, "Cooking");
+INSERT INTO hobbies VALUES (14, "Inventing");
+INSERT INTO hobbies VALUES (15, "Investing");
+INSERT INTO hobbies VALUES (16, "TED Talks");
+
+/* Inner Join */
+SELECT famous_people.name, hobbies.name AS Hobby
+FROM famous_people
+INNER JOIN hobbies
+ON famous_people.id = hobbies.hobby_id;
+
+/* LEFT OUTER JOIN */
+SELECT *
+FROM hobbies
+LEFT OUTER JOIN famous_people
+ON famous_people.id = hobbies.hobby_id;
