@@ -1,0 +1,35 @@
+-- Writing several queries on an example neflix database.
+
+-- Inner Join
+/* SELECT n1.director, n2.country
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" AS n1
+INNER JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" AS n2
+ON n1.show_id = n2.show_id; */
+
+-- How many movies are in the database?
+/* SELECT COUNT(*) AS Movies_Listed
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie'; */
+
+-- When was the most recent batch of tv shows and/or movies added to the database?
+/* SELECT MAX(date_added)
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" AS n1; */
+
+-- List all the movies and tv shows in alphabetical order.
+/* SELECT n1.title
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" AS n1
+ORDER BY title ASC; */
+
+-- Who was the Director for the movie Bright Star?
+/* SELECT n1.director, n2.title
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" AS n1
+INNER JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" AS n2
+ON n1.show_id = n2.show_id
+WHERE title = 'Bright Star'; */
+
+-- What is the oldest movie in the database and what year was it made?
+SELECT n1.title, n1.release_year
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" AS n1
+WHERE type = 'Movie'
+ORDER BY release_year ASC
+LIMIT 1;
