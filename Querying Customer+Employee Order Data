@@ -1,0 +1,48 @@
+-- In this SQL, I'm querying a database of customers/employees and music info.
+
+-- Show Customers (their full names, customer ID, and country) who are not in the US. 
+SELECT FirstName, LastName, CustomerId, Country
+FROM chinook.customers
+WHERE Country <> 'USA';
+
+-- Show only the Customers from Brazil.
+SELECT FirstName, LastName, Country
+FROM chinook.customers
+WHERE Country = 'Brazil'; 
+
+-- Find the Invoices of customers who are from Brazil. 
+-- The resulting table should show the customer's full name, 
+-- Invoice ID, Date of the invoice, and billing country.
+SELECT customers.FirstName, customers.LastName, invoices.InvoiceId,
+invoices.InvoiceDate, invoices.BillingCountry
+FROM chinook.customers AS customers
+LEFT JOIN chinook.invoices AS invoices
+ON customers.CustomerId = invoices.CustomerId
+WHERE invoices.BillingCountry = 'Brazil';
+
+-- Show the Employees who are Sales Agents.
+SELECT FirstName, LastName, Title
+FROM chinook.employees
+WHERE Title LIKE '%Sales% %Agent%';
+
+-- Find a unique/distinct list of billing countries from the Invoice table.
+SELECT InvoiceDate, BillingState, BillingCountry
+FROM chinook.invoices
+WHERE BillingState = 'CA';
+
+-- Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+SELECT employee.Title, invoices.InvoiceId, invoices.InvoiceDate
+FROM chinook.employees employee
+INNER JOIN chinook.invoices invoices
+ON employee.employeeId = invoices.InvoiceId
+WHERE employee.Title = 'Sales Support Agent';
+
+-- How many Invoices were there in 2009?
+SELECT COUNT(InvoiceId) AS NumInvoices
+FROM chinook.invoices
+WHERE InvoiceDate LIKE '%2009%';
+
+-- What are the total sales for 2009?
+SELECT SUM(Total)
+FROM chinook.invoices
+WHERE InvoiceDate LIKE '%2009%';
